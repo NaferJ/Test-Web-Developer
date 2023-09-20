@@ -55,7 +55,7 @@
 
                         {{-- Historial de Productos --}}
                         <div class="form-group">
-                            <strong>Historial de Productos:</strong>
+                            <strong>Historial de Vehiculos:</strong>
                             @if ($person->products->count() > 0)
                                 <ul>
                                     @foreach ($person->products as $product)
@@ -65,6 +65,14 @@
                             @else
                                 <p>No se encontraron productos en el historial de esta persona.</p>
                             @endif
+                        </div>
+                        <!-- Botón para agregar un vehículo -->
+                        <div class="form-group">
+                            <a href="{{ route('people.show-add-product-form', $person->id) }}" class="btn btn-success">Agregar Vehículo</a>
+                        </div>
+                        <!-- Botón para editar los datos de la persona -->
+                        <div class="form-group">
+                            <a href="{{ route('people.edit', $person->id) }}" class="btn btn-primary">Editar Persona</a>
                         </div>
                     </div>
                 </div>
