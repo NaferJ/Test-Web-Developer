@@ -27,10 +27,13 @@
             {!! $errors->first('profesion_u_oficio', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('es_casado') }}
-            {{ Form::text('es_casado', $person->es_casado, ['class' => 'form-control' . ($errors->has('es_casado') ? ' is-invalid' : ''), 'placeholder' => 'Es Casado']) }}
+            {{ Form::label('es_casado', 'Es Casado') }}
+            <select name="es_casado" class="form-control{{ $errors->has('es_casado') ? ' is-invalid' : '' }}">
+                <option value="1" {{ $person->es_casado ? 'selected' : '' }}>Sí</option>
+                <option value="0" {{ !$person->es_casado ? 'selected' : '' }}>No</option>
+            </select>
             {!! $errors->first('es_casado', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        </div>        
         <div class="form-group">
             {{ Form::label('ingresos_mensuales') }}
             {{ Form::text('ingresos_mensuales', $person->ingresos_mensuales, ['class' => 'form-control' . ($errors->has('ingresos_mensuales') ? ' is-invalid' : ''), 'placeholder' => 'Ingresos Mensuales']) }}

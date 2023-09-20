@@ -39,6 +39,12 @@ class Product extends Model
      */
     protected $fillable = ['placa','marca','modelo','numero_de_puertas','tipo_de_vehiculo'];
 
+    public function people()
+    {
+        return $this->belongsToMany(Person::class, 'person_product', 'product_id', 'person_id')->withTimestamps();
+    }
+
+
 
 
 }

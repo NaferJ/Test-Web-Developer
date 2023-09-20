@@ -53,6 +53,19 @@
                             {{ $person->vehiculo_actual }}
                         </div>
 
+                        {{-- Historial de Productos --}}
+                        <div class="form-group">
+                            <strong>Historial de Productos:</strong>
+                            @if ($person->products->count() > 0)
+                                <ul>
+                                    @foreach ($person->products as $product)
+                                        <li>{{ $product->placa }} - {{ $product->marca }} - {{ $product->modelo }}</li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <p>No se encontraron productos en el historial de esta persona.</p>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

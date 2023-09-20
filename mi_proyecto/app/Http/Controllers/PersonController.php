@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Person;
 use Illuminate\Http\Request;
 
@@ -105,5 +106,26 @@ class PersonController extends Controller
 
         return redirect()->route('people.index')
             ->with('success', 'Person deleted successfully');
+    }
+
+    public function showAddProductForm(Person $person)
+    {
+        $products = Product::all(); // Obtener todos los productos disponibles
+        return view('add-product-form', compact('person', 'products'));
+    }
+
+    public function addProduct(Request $request, Person $person)
+    {
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+        ]);
+
+        $product = Product::find($request->input('product_id'));
+
+        // Asociar el producto a la persona
+        $person->products()->attach($product);
+
+        return redirect()->route('people.show', $person->id)
+            ->with('success', 'Producto agregado al historial exitosamente.');
     }
 }

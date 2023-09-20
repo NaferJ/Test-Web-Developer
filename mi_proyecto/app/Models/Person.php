@@ -44,6 +44,10 @@ class Person extends Model
      */
     protected $fillable = ['nombres','apellidos','fecha_nacimiento','identificacion','profesion_u_oficio','es_casado','ingresos_mensuales','vehiculo_actual'];
 
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'person_product', 'person_id', 'product_id')->withTimestamps();
+    }
 
 
 }
