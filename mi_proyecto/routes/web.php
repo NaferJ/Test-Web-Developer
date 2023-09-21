@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\APIPersonAPIController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +23,8 @@ Route::resource('people', PersonController::class);
 
 Route::get('/people/{person}/add-product', 'PersonController@showAddProductForm')->name('people.show-add-product-form');
 Route::post('/people/{person}/add-product', 'PersonController@addProduct')->name('people.addProduct');
+
+Route::get('/api/people', [APIPersonAPIController::class, 'getAllPeople']);
 
 Auth::routes();
 

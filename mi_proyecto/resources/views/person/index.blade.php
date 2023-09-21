@@ -65,6 +65,10 @@
                                             <td>
                                                 <form action="{{ route('people.destroy',$person->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('people.show',$person->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <!-- Botón para agregar un vehículo -->
+                        
+                                                    <a href="{{ route('people.show-add-product-form', $person->id) }}" class="btn btn-sm btn-primary">Agregar Vehículo</a>
+                        
                                                     <a class="btn btn-sm btn-success" href="{{ route('people.edit',$person->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
