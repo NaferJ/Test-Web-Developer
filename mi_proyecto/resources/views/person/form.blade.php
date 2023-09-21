@@ -41,9 +41,20 @@
         </div>
         <div class="form-group">
             {{ Form::label('vehiculo_actual') }}
-            {{ Form::text('vehiculo_actual', $person->vehiculo_actual, ['class' => 'form-control' . ($errors->has('vehiculo_actual') ? ' is-invalid' : ''), 'placeholder' => 'Vehiculo Actual']) }}
+            <select name="vehiculo_actual" class="form-control{{ $errors->has('vehiculo_actual') ? ' is-invalid' : '' }}" placeholder="Vehiculo Actual">
+                <option value="">Seleccionar Vehículo Actual</option>
+                @foreach($products as $product)
+                    <option value="{{ $product->marca }} - {{ $product->modelo }}" {{ $product->marca }} - {{ $product->modelo == $person->vehiculo_actual ? 'selected' : '' }}>
+                        Marca: {{ $product->marca }} | Modelo: {{ $product->modelo }}
+                    </option>
+                @endforeach
+            </select>
             {!! $errors->first('vehiculo_actual', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        
+        
+        
+        
 
     </div>
     <div class="box-footer mt20">

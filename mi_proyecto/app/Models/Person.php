@@ -33,6 +33,7 @@ class Person extends Model
 		'profesion_u_oficio' => 'required',
 		'es_casado' => 'required',
 		'ingresos_mensuales' => 'required',
+    'vehiculo_actual' => 'required'
     ];
 
     protected $perPage = 20;

@@ -33,7 +33,8 @@ class PersonController extends Controller
     public function create()
     {
         $person = new Person();
-        return view('person.create', compact('person'));
+        $products = Product::select('tipo_de_vehiculo', 'placa', 'marca', 'modelo')->distinct()->get();
+        return view('person.create', compact('products','person'));
     }
 
     /**
@@ -74,8 +75,9 @@ class PersonController extends Controller
     public function edit($id)
     {
         $person = Person::find($id);
+        $products = Product::select('tipo_de_vehiculo', 'placa', 'marca', 'modelo')->distinct()->get();
 
-        return view('person.edit', compact('person'));
+        return view('person.edit', compact('person', 'products'));
     }
 
     /**
